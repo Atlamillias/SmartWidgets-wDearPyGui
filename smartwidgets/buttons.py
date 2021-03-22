@@ -1,4 +1,4 @@
-from bases import SmartDependant, ConfigProperty
+from .bases import SmartDependant, ConfigProperty
 from typing import Union, Callable, Any
 from dearpygui import core as dpg
 
