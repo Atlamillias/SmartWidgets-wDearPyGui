@@ -9,8 +9,6 @@ __all__ = [
     "NodeAttribute"
 ]
 
-# This module needs defaults added to params, not __init__ bodies
-
 
 class NodeEditor(SmartDependant):
     _func = dpg.add_node_editor
@@ -23,9 +21,10 @@ class NodeEditor(SmartDependant):
     def __init__(
         self, 
         id: str = None,
+        *,
         show: bool = True,
-        parent: str = None,
-        before: str = None,
+        parent: str = "",
+        before: str = "",
         link_callback: Callable = None,
         delink_callback: Callable = None
     ):
@@ -54,19 +53,20 @@ class Node(SmartDependant):
     def __init__(
         self,
         id: str = None,
-        label: str  = None,
+        *,
+        label: str  = "",
         show: bool = True,
         draggable: bool = True,
-        parent: str = None,
-        before: str = None,
+        parent: str = "",
+        before: str = "",
         x_pos: int = None,
         y_pos: int = None,
         ):
         super().__init__(id, label, parent, before)
         self.show = show
         self.draggable = draggable
-        self.x_pos = x_pos if x_pos is not None else 0
-        self.y_pos = y_pos if y_pos is not None else 0
+        self.x_pos = x_pos
+        self.y_pos = y_pos
 
 
 class NodeAttribute(SmartDependant):
@@ -80,8 +80,8 @@ class NodeAttribute(SmartDependant):
         self, 
         id: str = None,
         show: bool = True,
-        parent: str = None,
-        before: str = None,
+        parent: str = "",
+        before: str = "",
         output: bool = False,
         static: bool = False
     ):

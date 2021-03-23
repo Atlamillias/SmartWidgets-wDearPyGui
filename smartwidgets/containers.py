@@ -83,7 +83,6 @@ class Window(SmartObject):
         Title and menu bars remain unaffected.
 
         show: If False, the item will not be viewable.
-
     """
 
     _func = dpg.add_window
