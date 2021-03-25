@@ -383,3 +383,13 @@ class SmartDependant(SmartObject):
     def move_down(self):
         """Moves the item down 1 in the parents' stack."""
         move_item_down(self.id)
+
+
+class AddOnlyMixin:
+    """Mixin class for overloading the context manager methods. Used for items
+    that cannot be parents."""
+    def __enter__(self):
+        pass
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
