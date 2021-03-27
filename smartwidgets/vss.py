@@ -20,7 +20,8 @@ class ValueStorageProxy:
         dpg.add_value(self.key, self._value)
 
     def __call__(self):
-        return dpg.get_value(self.key)
+        self._value = dpg.get_value(self.key)
+        return self._value
 
     def __get__(self):
         return self.__call__
