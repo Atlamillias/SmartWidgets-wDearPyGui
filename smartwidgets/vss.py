@@ -1,8 +1,10 @@
-from typing import Any, Callable
+from typing import Any
 
 from dearpygui import core as dpg
 
-from .bases import SmartDependant, ConfigProperty
+__all__ = [
+    "ValueStorageProxy"
+]
 
 
 class ValueStorageProxy:
