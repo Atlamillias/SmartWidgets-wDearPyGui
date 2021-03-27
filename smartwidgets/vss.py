@@ -8,6 +8,8 @@ __all__ = [
 
 
 class ValueStorageProxy:
+    """Middle-man for DearPyGui's value storage system. Returns 
+    a callable object that returns the stored value."""
     _keygen_counter = None
     _value = None
 
