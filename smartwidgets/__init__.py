@@ -6,3 +6,4 @@ from smartwidgets.node import *
 from smartwidgets.inputs import *
 from smartwidgets.buttons import *
 from smartwidgets.widgets import *
+from smartwidgets.vss import ValueStorageProxy
