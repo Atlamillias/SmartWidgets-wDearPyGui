@@ -31,10 +31,10 @@ class ValueStorageProxy:
         if cls._keygen_counter is None:
             cls._keygen_counter = 0
 
-        while dpg.does_item_exist(id := f'{cls.__name__}<{cls._keygen_counter}>'):
+        while dpg.get_value(key := f'{cls.__name__}<{cls._keygen_counter}>'):
             cls._keygen_counter += 1
 
-        return id
+        return key
 
     @property
     def key(self):
