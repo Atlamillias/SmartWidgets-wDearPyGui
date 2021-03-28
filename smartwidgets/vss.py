@@ -8,29 +8,22 @@ __all__ = [
 
 
 class ValueStorageProxy:
-    """Middle-man for DearPyGui's value storage system. Returns 
-    a callable object that returns the stored value."""
+    """Middle-man for DearPyGui's value storage system."""
     _keygen_counter = None
+    _key = None
     _value = None
 
     def __init__(self, value: Any, key: str = None):
         self._key = key or self._keygen()
         self._value = value
 
-        dpg.add_value(self.key, self._value)
-
-    def __call__(self):
-        self._value = dpg.get_value(self.key)
-        return self._value
-
-    def __get__(self):
-        return self.__call__
+        dpg.add_value(self._key, self._value)
 
     def __repr__(self):
         return f"{self.__class__.__qualname__}"
 
     def __str__(self):
-        return str({self.key: self()})
+        return str({self.key: self.value})
 
     @classmethod
     def _keygen(cls):
@@ -47,6 +40,17 @@ class ValueStorageProxy:
     def key(self):
         return self._key
 
-    def set(self, value):
+    @property
+    def value(self):
+        self._value = dpg.get_value(self._key)
+        return self._value
+
+    @value.setter
+    def value(self, value):
         dpg.set_value(self._key, value)
 
+    def get(self):
+        return self.value
+
+    def set(self, value):
+        dpg.set_value(self._key, value)
