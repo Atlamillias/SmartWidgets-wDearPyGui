@@ -31,7 +31,7 @@ class ValueStorageProxy:
         if cls._keygen_counter is None:
             cls._keygen_counter = 0
 
-        while dpg.get_value(key := f'{cls.__name__}<{cls._keygen_counter}>'):
+        while dpg.get_value(key := f'{cls.__name__}<{cls._keygen_counter}>') is None:
             cls._keygen_counter += 1
 
         return key
